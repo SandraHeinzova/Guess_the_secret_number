@@ -56,7 +56,6 @@ def lehka_uroven():
 while hraju == "ano":
     print("Myslím si číslo od 1 do 100.")
     number = random.randint(0, 101)
-    # print (number)
     obtiznost = input("Vyberte obtížnost hry. Napište 'easy' nebo 'hard' ").lower()
     if obtiznost == "easy":
         lehka_uroven()
