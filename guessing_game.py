@@ -2,14 +2,9 @@ from guessing_game_logo import logo
 import random
 import os
 
-# print(logo)
+print(logo)
 print ("Vítejte ve hře Guess secret number. Porazte počítač.")
 hraju = "ano"
-
-print("Myslím si číslo od 1 do 100.")
-number = random.randint(0, 101)
-print (number)
-# pokusy = 5
 
 def tezka_uroven():
     pokusy = 5
@@ -54,6 +49,17 @@ def lehka_uroven():
             break
 
 
-
-lehka_uroven()
+while hraju == "ano":
+    print("Myslím si číslo od 1 do 100.")
+    number = random.randint(0, 101)
+    print (number)
+    obtiznost = input("Vyberte obtížnost hry. Napište 'easy' nebo 'hard' ").lower()
+    if obtiznost == "easy":
+        lehka_uroven()
+        hraju = input("Napište 'ano', pokud chcete hrát znovu. Napište 'ne', pokud chcete hru ukončit. ")
+        os.system("cls")
+    elif obtiznost == "hard":
+        tezka_uroven()
+        hraju = input("Napište 'ano', pokud chcete hrát znovu. Napište 'ne', pokud chcete hru ukončit. ")
+        os.system("cls")
 
