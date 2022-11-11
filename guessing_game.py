@@ -15,10 +15,16 @@ while pokusy > 0:
     print (f"Váš počet zbývajících pokusů je {pokusy}")
     tip = int(input("Tipněte si číslo: "))
     if tip > number:
-        print("Příliš vysoké. Zkuste to znovu.")
+        print("Příliš vysoké!")
         pokusy -= 1
+        if pokusy == 0:
+            print("Došly Vám pokusy! Prohráli jste. Mmožná příště.")
+            break
     elif tip < number:
-        print("Příliš nízké! Zkuste to znovu!")
+        print("Příliš nízké!")
         pokusy -= 1
+        if pokusy == 0:
+            print("Došly Vám pokusy! Prohráli jste. Mmožná příště.")
+            break
     elif tip == number:
-        print("Vyhráli jste! Gratuluji!")  
+        print("Vyhráli jste! Gratuluji!")
