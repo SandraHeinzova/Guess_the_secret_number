@@ -16,12 +16,14 @@ def tezka_uroven():
             pokusy -= 1
             if pokusy == 0:
                 print("Došly Vám pokusy! Prohráli jste. Mmožná příště.")
+                print(f"Hádané číslo bylo {number}")
                 break
         elif tip < number:
             print("Příliš nízké!")
             pokusy -= 1
             if pokusy == 0:
                 print("Došly Vám pokusy! Prohráli jste. Mmožná příště.")
+                print(f"Hádané číslo bylo {number}")
                 break
         elif tip == number:
             print("Vyhráli jste! Gratuluji!")
@@ -37,12 +39,14 @@ def lehka_uroven():
             pokusy -= 1
             if pokusy == 0:
                 print("Došly Vám pokusy! Prohráli jste. Mmožná příště.")
+                print(f"Hádané číslo bylo {number}")
                 break
         elif tip < number:
             print("Příliš nízké!")
             pokusy -= 1
             if pokusy == 0:
                 print("Došly Vám pokusy! Prohráli jste. Mmožná příště.")
+                print(f"Hádané číslo bylo {number}")
                 break
         elif tip == number:
             print("Vyhráli jste! Gratuluji!")
@@ -52,7 +56,7 @@ def lehka_uroven():
 while hraju == "ano":
     print("Myslím si číslo od 1 do 100.")
     number = random.randint(0, 101)
-    print (number)
+    # print (number)
     obtiznost = input("Vyberte obtížnost hry. Napište 'easy' nebo 'hard' ").lower()
     if obtiznost == "easy":
         lehka_uroven()
