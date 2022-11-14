@@ -3,66 +3,44 @@ import random
 import os
 
 print(logo)
-print ("Vítejte ve hře Guess secret number. Porazte počítač.")
-hraju = "ano"
+print ("Vítejte ve hře Guess the secret number. Porazte počítač!.")
+attempts = 0
+play_again = "yes"
 
-def tezka_uroven():
-    pokusy = 5
-    while pokusy > 0:
-        print (f"Váš počet zbývajících pokusů je {pokusy}")
-        tip = int(input("Tipněte si číslo: "))
-        if tip > number:
-            print("Příliš vysoké!")
-            pokusy -= 1
-            if pokusy == 0:
-                print("Došly Vám pokusy! Prohráli jste. Mmožná příště.")
-                print(f"Hádané číslo bylo {number}")
-                break
-        elif tip < number:
-            print("Příliš nízké!")
-            pokusy -= 1
-            if pokusy == 0:
-                print("Došly Vám pokusy! Prohráli jste. Mmožná příště.")
-                print(f"Hádané číslo bylo {number}")
-                break
-        elif tip == number:
+def guessing(attempts):
+    print("Myslím si číslo od 0 do 100.")
+    secret_number = random.randint(0, 101)
+    difficulty = input("Zvolte obtížnost hry: easy/hard: ").lower()
+    if difficulty == "easy":
+        attempts = 10
+    elif difficulty == "hard":
+        attempts = 5
+    
+    while attempts > 0:
+        print (f"Váš počet zbývajících pokusů je {attempts}")
+        guess = int(input("Tipněte si číslo: "))
+        # Check if the guess = secret number
+        if guess == secret_number:
             print("Vyhráli jste! Gratuluji!")
             break
-            
-def lehka_uroven():
-    pokusy = 10
-    while pokusy > 0:
-        print (f"Váš počet zbývajících pokusů je {pokusy}")
-        tip = int(input("Tipněte si číslo: "))
-        if tip > number:
-            print("Příliš vysoké!")
-            pokusy -= 1
-            if pokusy == 0:
-                print("Došly Vám pokusy! Prohráli jste. Mmožná příště.")
-                print(f"Hádané číslo bylo {number}")
-                break
-        elif tip < number:
-            print("Příliš nízké!")
-            pokusy -= 1
-            if pokusy == 0:
-                print("Došly Vám pokusy! Prohráli jste. Mmožná příště.")
-                print(f"Hádané číslo bylo {number}")
-                break
-        elif tip == number:
-            print("Vyhráli jste! Gratuluji!")
-            break
+        # If the guess is not the secret number, it can be lower or bigger
+        else:
+            attempts -= 1
+            if guess > secret_number: 
+                print("Příliš vysoké!")
+            else: 
+                print("Příliš nízké!")
+
+    if attempts == 0:
+        print("Došly Vám pokusy! Prohráli jste.")
+        print(f"Hádané číslo bylo {secret_number}")
+     
+     
 
 
-while hraju == "ano":
-    print("Myslím si číslo od 1 do 100.")
-    number = random.randint(0, 101)
-    obtiznost = input("Vyberte obtížnost hry. Napište 'easy' nebo 'hard' ").lower()
-    if obtiznost == "easy":
-        lehka_uroven()
-        hraju = input("Napište 'ano', pokud chcete hrát znovu. Napište 'ne', pokud chcete hru ukončit. ")
-        os.system("cls")
-    elif obtiznost == "hard":
-        tezka_uroven()
-        hraju = input("Napište 'ano', pokud chcete hrát znovu. Napište 'ne', pokud chcete hru ukončit. ")
-        os.system("cls")
-
+while play_again == "yes":
+    guessing(attempts)
+    play_again = input("Chcete hrát znovu? yes / no  "). lower()
+    os.system("cls")
+    
+print ("Díky za hru! Ahoj.")    
