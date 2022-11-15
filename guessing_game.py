@@ -10,6 +10,8 @@ play_again = "yes"
 def guessing(attempts):
     print("Myslím si číslo od 0 do 100.")
     secret_number = random.randint(0, 101)
+    print(secret_number)
+    # while loop to check valid difficulty input
     while True:
         difficulty = input("Zvolte obtížnost hry: easy/hard: ").lower()
         if difficulty == "easy":
@@ -22,23 +24,31 @@ def guessing(attempts):
             print("Nerozumím.")
     
     while attempts > 0:
-        print (f"Váš počet zbývajících pokusů je {attempts}")
-        guess = int(input("Tipněte si číslo: "))
-        # Check if the guess = secret number
-        if guess == secret_number:
-            print("Vyhráli jste! Gratuluji!")
-            break
-        # If the guess is not the secret number, it can be lower or bigger
-        else:
-            attempts -= 1
-            if guess > secret_number: 
-                print("Příliš vysoké!")
-            else: 
-                print("Příliš nízké!")
+        # while loop and try - except to check whether is 'guess' int or not
+        while True:
+            print (f"Váš počet zbývajících pokusů je {attempts}")
+            guess = input("Tipněte si číslo: ")
+            if attempts > 0:
+                try:
+                    # Check if the guess = secret number
+                    guess = int(guess)
+                    if guess == secret_number:
+                        print("Vyhráli jste! Gratuluji!")
+                        return False
+                    # If the guess is not the secret number, it can be lower or bigger
+                    else:
+                        attempts -= 1
+                        if guess > secret_number: 
+                            print("Příliš vysoké!")
+                        else: 
+                            print("Příliš nízké!")
+                except ValueError: 
+                    print("To nebylo číslo! Tipni si číslo.")
 
-    if attempts == 0:
-        print("Došly Vám pokusy! Prohráli jste.")
-        print(f"Hádané číslo bylo {secret_number}")
+            else:
+                print("Došly Vám pokusy! Prohráli jste.")
+                print(f"Hádané číslo bylo {secret_number}")
+                break
      
      
 
@@ -46,6 +56,7 @@ def guessing(attempts):
 while play_again == "yes":
     guessing(attempts)
     play_again = input("Chcete hrát znovu? yes / no  "). lower()
-    os.system("cls")
+    if play_again != "ano" or "ne":
+        print("Tato odpověď nebyla v nabídce. Program ukončen.")
     
 print ("Díky za hru! Ahoj.")    
