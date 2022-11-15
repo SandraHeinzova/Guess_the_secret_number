@@ -1,6 +1,7 @@
 from guessing_game_logo import logo
 import random
 import os
+import time
 
 print(logo)
 print ("Vítejte ve hře Guess the secret number. Porazte počítač!.")
@@ -56,7 +57,12 @@ def guessing(attempts):
 while play_again == "yes":
     guessing(attempts)
     play_again = input("Chcete hrát znovu? yes / no  "). lower()
-    if play_again != "ano" or "ne":
-        print("Tato odpověď nebyla v nabídce. Program ukončen.")
+    if play_again == "yes":
+        print("Hra začíná znovu!")
+    elif play_again != "no":
+        print ("Tato odpověď nebyla v nabídce. Program bude ukončen.")
     
-print ("Díky za hru! Ahoj.")    
+    
+print ("Díky za hru! Ahoj.") 
+time.sleep(5)
+os.system("cls")
