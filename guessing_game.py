@@ -10,11 +10,16 @@ play_again = "yes"
 def guessing(attempts):
     print("Myslím si číslo od 0 do 100.")
     secret_number = random.randint(0, 101)
-    difficulty = input("Zvolte obtížnost hry: easy/hard: ").lower()
-    if difficulty == "easy":
-        attempts = 10
-    elif difficulty == "hard":
-        attempts = 5
+    while True:
+        difficulty = input("Zvolte obtížnost hry: easy/hard: ").lower()
+        if difficulty == "easy":
+            attempts = 10
+            break
+        elif difficulty == "hard":
+            attempts = 5
+            break
+        else:
+            print("Nerozumím.")
     
     while attempts > 0:
         print (f"Váš počet zbývajících pokusů je {attempts}")
