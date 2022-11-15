@@ -11,7 +11,6 @@ play_again = "yes"
 def guessing(attempts):
     print("Myslím si číslo od 0 do 100.")
     secret_number = random.randint(0, 100)
-    print(secret_number)
     # while loop to check valid difficulty input
     while True:
         difficulty = input("Zvolte obtížnost hry: easy/hard: ").lower()
@@ -58,7 +57,6 @@ while play_again == "yes":
     guessing(attempts)
     play_again = input("Chcete hrát znovu? yes / no  "). lower()
     if play_again == "yes":
-        print("Hra začíná znovu!")
         os.system("cls")
     elif play_again != "no":
         print ("Tato odpověď nebyla v nabídce. Program bude ukončen.")
