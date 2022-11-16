@@ -39,9 +39,9 @@ def guessing(attempts):
                     else:
                         attempts -= 1
                         if guess > secret_number: 
-                            print("Příliš vysoké!")
+                            print("Příliš vysoké! \n")
                         else: 
-                            print("Příliš nízké!")
+                            print("Příliš nízké!\n")
                 except ValueError: 
                     print("To nebylo číslo! Tipni si číslo.")
 
